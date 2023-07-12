@@ -4,7 +4,6 @@
 *&
 *&---------------------------------------------------------------------*
 REPORT zot_08_calculator.
-
 SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE TEXT-001.
 
   PARAMETERS: p_val1 TYPE p DECIMALS 2 OBLIGATORY,
@@ -66,4 +65,4 @@ START-OF-SELECTION.
 
   ENDIF.
 
-  cl_demo_output=>display( ).
+cl_demo_output=>display( ).
