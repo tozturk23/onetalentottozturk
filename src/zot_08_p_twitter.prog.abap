@@ -8,8 +8,8 @@ REPORT zot_08_p_twitter.
 "ZOT_08_T_TW
 
 TYPES: BEGIN OF ty_abapitter,
-  tweet TYPE ZOT_08_E_TWEET,
-  END OF ty_abapitter.
+         tweet TYPE zot_08_e_tweet,
+       END OF ty_abapitter.
 
 SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE TEXT-001.
 
@@ -30,7 +30,7 @@ SELECTION-SCREEN END OF BLOCK b2.
 DATA: gv_mes    TYPE char200,
       gt_table  TYPE TABLE OF zot_08_t_tw,
       gs_table  TYPE zot_08_t_tw,
-      abapitter TYPE TABLE OF ty_abapitter,
+      abapitter TYPE TABLE OF ty_abapitter.
 
 START-OF-SELECTION.
 
@@ -90,10 +90,19 @@ START-OF-SELECTION.
           MESSAGE: 'Boş tweet atılamaz' TYPE 'I'.
 
         ELSE.
-          gs_table-kullanici = sy-uname.
-          gs_table-tweet_id  = p_twid.
-          gs_table-tweet     = p_tweet.
-          MODIFY zot_08_t_tw FROM gs_table.
+
+          IF lt_table2 IS INITIAL.
+
+            MESSAGE: 'Böyle bir tweet bulunamadı!' TYPE 'I'.
+
+          ELSE.
+
+            gs_table-kullanici = sy-uname.
+            gs_table-tweet_id  = p_twid.
+            gs_table-tweet     = p_tweet.
+            MODIFY zot_08_t_tw FROM gs_table.
+
+          ENDIF.
 
         ENDIF.
 
@@ -129,7 +138,7 @@ START-OF-SELECTION.
     SELECT tweet FROM zot_08_t_tw
       INTO TABLE @abapitter WHERE kullanici = @sy-uname.
 
-    cl_demo_output=>write( ABAPITTER ).
+    cl_demo_output=>write( abapitter ).
 
     cl_demo_output=>display( ).
 
