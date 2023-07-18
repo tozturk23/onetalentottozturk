@@ -90,8 +90,19 @@ START-OF-SELECTION.
 
   ENDLOOP.
 
-MOVE-CORRESPONDING gt_new TO gt_sum.
+  LOOP AT gt_new INTO gs_new.
 
-  COLLECT gs_sum INTO gt_sum.
+    gs_sum = VALUE #( matkl = gs_new-matkl
+                      menge = gs_new-menge ).
+
+    COLLECT gs_sum INTO gt_sum.
+
+  ENDLOOP.
+
+  DELETE gt_new WHERE menge < 10.
+
+  SORT gt_new BY menge ASCENDING.
+
+  SORT gt_sum BY menge DESCENDING.
 
   BREAK-POINT.
