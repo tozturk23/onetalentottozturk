@@ -73,7 +73,7 @@ START-OF-SELECTION.
       gs_alv-gun = 0.
       gs_alv-ay = gv_months - 1.
 
-      IF gs_alv-yil EQ 0.
+      IF gv_years EQ 0.
 
         gs_alv-yil = gv_years.
 
@@ -94,7 +94,7 @@ START-OF-SELECTION.
 
       gs_alv-ay = gv_months - 1.
 
-      IF gs_alv-yil EQ 0.
+      IF gv_years EQ 0.
 
         gs_alv-yil = gv_years.
 
@@ -104,17 +104,37 @@ START-OF-SELECTION.
 
       ENDIF.
 
-    ELSEIF gv_months = 1 AND gv_days NE 1.
+    ELSEIF gv_months = 1 AND gv_days NE 1 AND gv_years NE 0.
 
       IF ls_table-baslangic_saati > ls_table-bitis_saati.
-        gs_alv-gun = gv_days - 2.
+        gs_alv-gun = gv_days.
       ELSE.
         gs_alv-gun = gv_days - 1.
       ENDIF.
 
       gs_alv-ay = 0.
 
-      IF gs_alv-yil EQ 0.
+      IF gv_years EQ 0.
+
+        gs_alv-yil = gv_years.
+
+      ELSE.
+
+        gs_alv-yil = gv_years - 1.
+
+      ENDIF.
+
+    ELSEIF gv_months = 1 AND gv_days NE 1 AND gv_years EQ 0.
+
+      IF ls_table-baslangic_saati > ls_table-bitis_saati.
+        gs_alv-gun = gv_days2.
+      ELSE.
+        gs_alv-gun = gv_days2 - 1.
+      ENDIF.
+
+      gs_alv-ay = 0.
+
+      IF gv_years EQ 0.
 
         gs_alv-yil = gv_years.
 
@@ -134,7 +154,7 @@ START-OF-SELECTION.
 
       gs_alv-ay = 0.
 
-      IF gs_alv-yil EQ 0.
+      IF gv_years EQ 0.
 
         gs_alv-yil = gv_years.
 
@@ -223,8 +243,7 @@ START-OF-SELECTION.
       t_outtab                          = gt_alv
 *   EXCEPTIONS
 *     PROGRAM_ERROR                     = 1
-*     OTHERS                            = 2
-            .
+                                                .
   IF sy-subrc <> 0.
 * Implement suitable error handling here
   ENDIF.
@@ -248,3 +267,6 @@ START-OF-SELECTION.
   IF sy-subrc <> 0.
 * Implement suitable error handling here
   ENDIF.
+
+  gs_fcat-no_zero = abap_true.
+  APPEND gs_fcat TO gt_fcat.
