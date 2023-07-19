@@ -33,6 +33,6 @@ gv_p = 3.
 *
 *WRITE: lv_date2.
 
-DATA(gv_res) = lv_date1 - lv_date2.
+DATA(gv_res) = lv_date1 - lv_date2 + 1.
 
 WRITE: gv_res.
