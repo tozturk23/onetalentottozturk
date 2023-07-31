@@ -57,7 +57,19 @@ ENDCLASS.
 
 CLASS cl_event_receiver IMPLEMENTATION.
   METHOD handle_top_of_page.
-    BREAK-POINT.
+    DATA: lv_text TYPE sdydo_text_element.
+
+    CONCATENATE sy-repid sy-uname sy-datum sy-uzeit INTO lv_text SEPARATED BY space.
+
+    CALL METHOD go_document->add_text
+      EXPORTING
+        text          = lv_text
+        sap_style     = cl_dd_document=>heading.
+
+    CALL METHOD go_document->display_document
+      EXPORTING
+        parent             = go_sub1.
+
   ENDMETHOD.   "handle_top_of_page
 
   METHOD handle_hotspot_click.

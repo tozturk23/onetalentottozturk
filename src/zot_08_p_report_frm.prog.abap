@@ -121,9 +121,42 @@ FORM display_alv .
     EXPORTING
       container_name = 'CC_ALV'.
 
+  CREATE OBJECT go_splitter
+    EXPORTING
+      parent                  = go_custom
+      rows                    = 2
+      columns                 = 1.
+
+ CALL METHOD go_splitter->get_container
+   EXPORTING
+     row       = 1
+     column    = 1
+   RECEIVING
+     container = go_sub1
+   .
+ CALL METHOD go_splitter->get_container
+   EXPORTING
+     row       = 2
+     column    = 1
+   RECEIVING
+     container = go_sub2.
+
   CREATE OBJECT go_grid
     EXPORTING
-      i_parent = go_custom.
+      i_parent = go_sub2.
+
+  CALL METHOD go_splitter->set_row_height
+    EXPORTING
+      id                = 1
+      height            = 15.
+
+  CREATE OBJECT go_document
+    EXPORTING
+      style            = 'ALV_GRID'.
+
+  CREATE OBJECT go_event_receiver.
+
+  SET HANDLER go_event_receiver->handle_top_of_page FOR go_grid.
 
   IF r_rad1 EQ abap_true.
 
@@ -147,6 +180,10 @@ FORM display_alv .
 
   ENDIF.
 
+  CALL METHOD go_grid->list_processing_events
+    EXPORTING
+      i_event_name      = 'TOP_OF_PAGE'
+      i_dyndoc_id       = go_document.
 
 ENDFORM.
 

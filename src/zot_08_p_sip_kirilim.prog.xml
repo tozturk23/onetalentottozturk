@@ -3,7 +3,7 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <PROGDIR>
-    <NAME>ZOT_08_P_REPORT</NAME>
+    <NAME>ZOT_08_P_SIP_KIRILIM</NAME>
     <SUBC>1</SUBC>
     <RLOAD>T</RLOAD>
     <FIXPT>X</FIXPT>
@@ -12,14 +12,14 @@
    <DYNPROS>
     <item>
      <HEADER>
-      <PROGRAM>ZOT_08_P_REPORT</PROGRAM>
+      <PROGRAM>ZOT_08_P_SIP_KIRILIM</PROGRAM>
       <SCREEN>0100</SCREEN>
       <LANGUAGE>T</LANGUAGE>
       <DESCRIPT>Screen</DESCRIPT>
       <TYPE>N</TYPE>
       <NEXTSCREEN>0100</NEXTSCREEN>
-      <LINES>027</LINES>
-      <COLUMNS>121</COLUMNS>
+      <LINES>030</LINES>
+      <COLUMNS>209</COLUMNS>
      </HEADER>
      <CONTAINERS>
       <RPY_DYCATT>
@@ -30,10 +30,10 @@
        <TYPE>CUST_CTRL</TYPE>
        <NAME>CC_ALV</NAME>
        <ELEMENT_OF>SCREEN</ELEMENT_OF>
-       <LINE>002</LINE>
+       <LINE>001</LINE>
        <COLUMN>001</COLUMN>
-       <LENGTH>119</LENGTH>
-       <HEIGHT>025</HEIGHT>
+       <LENGTH>207</LENGTH>
+       <HEIGHT>030</HEIGHT>
       </RPY_DYCATT>
      </CONTAINERS>
      <FIELDS>
@@ -78,7 +78,7 @@
       <ACTCODE>000001</ACTCODE>
       <PFKCODE>000001</PFKCODE>
       <BUTCODE>0001</BUTCODE>
-      <INT_NOTE>GUI Status</INT_NOTE>
+      <INT_NOTE>0100</INT_NOTE>
      </RSMPE_STAT>
     </STA>
     <FUN>
@@ -102,34 +102,12 @@
       <ICON_ID>@0W@</ICON_ID>
       <FUN_TEXT>Cancel</FUN_TEXT>
      </RSMPE_FUNT>
-     <RSMPE_FUNT>
-      <CODE>&amp;PRINT</CODE>
-      <TEXTNO>001</TEXTNO>
-      <TEXT_TYPE>S</TEXT_TYPE>
-      <TEXT_NAME>ICON_PRINT</TEXT_NAME>
-      <ICON_ID>@0X@</ICON_ID>
-      <FUN_TEXT>Print</FUN_TEXT>
-     </RSMPE_FUNT>
-     <RSMPE_FUNT>
-      <CODE>&amp;SAVE</CODE>
-      <TEXTNO>001</TEXTNO>
-      <TEXT_TYPE>S</TEXT_TYPE>
-      <TEXT_NAME>ICON_SYSTEM_SAVE</TEXT_NAME>
-      <ICON_ID>@2L@</ICON_ID>
-      <FUN_TEXT>Save</FUN_TEXT>
-     </RSMPE_FUNT>
     </FUN>
     <PFK>
      <RSMPE_PFK>
       <CODE>000001</CODE>
       <PFNO>03</PFNO>
       <FUNCODE>&amp;BACK</FUNCODE>
-      <FUNNO>001</FUNNO>
-     </RSMPE_PFK>
-     <RSMPE_PFK>
-      <CODE>000001</CODE>
-      <PFNO>11</PFNO>
-      <FUNCODE>&amp;SAVE</FUNCODE>
       <FUNNO>001</FUNNO>
      </RSMPE_PFK>
      <RSMPE_PFK>
@@ -144,25 +122,11 @@
       <FUNCODE>&amp;BACK</FUNCODE>
       <FUNNO>002</FUNNO>
      </RSMPE_PFK>
-     <RSMPE_PFK>
-      <CODE>000001</CODE>
-      <PFNO>86</PFNO>
-      <FUNCODE>&amp;PRINT</FUNCODE>
-      <FUNNO>001</FUNNO>
-     </RSMPE_PFK>
     </PFK>
     <SET>
      <RSMPE_STAF>
       <STATUS>0100</STATUS>
       <FUNCTION>&amp;BACK</FUNCTION>
-     </RSMPE_STAF>
-     <RSMPE_STAF>
-      <STATUS>0100</STATUS>
-      <FUNCTION>&amp;PRINT</FUNCTION>
-     </RSMPE_STAF>
-     <RSMPE_STAF>
-      <STATUS>0100</STATUS>
-      <FUNCTION>&amp;SAVE</FUNCTION>
      </RSMPE_STAF>
     </SET>
     <DOC>
@@ -170,88 +134,130 @@
       <OBJ_TYPE>A</OBJ_TYPE>
       <OBJ_CODE>000001</OBJ_CODE>
       <MODAL>D</MODAL>
-      <INT_NOTE>GUI Status</INT_NOTE>
+      <INT_NOTE>0100</INT_NOTE>
      </RSMPE_ATRT>
      <RSMPE_ATRT>
       <OBJ_TYPE>P</OBJ_TYPE>
       <OBJ_CODE>000001</OBJ_CODE>
       <MODAL>D</MODAL>
-      <INT_NOTE>GUI Status</INT_NOTE>
+      <INT_NOTE>0100</INT_NOTE>
      </RSMPE_ATRT>
      <RSMPE_ATRT>
       <OBJ_TYPE>B</OBJ_TYPE>
       <OBJ_CODE>000001</OBJ_CODE>
       <SUB_CODE>0001</SUB_CODE>
       <MODAL>D</MODAL>
-      <INT_NOTE>GUI Status</INT_NOTE>
+      <INT_NOTE>0100</INT_NOTE>
      </RSMPE_ATRT>
     </DOC>
-    <TIT>
-     <RSMPE_TITT>
-      <CODE>0100</CODE>
-      <TEXT>Beyin Fırtınası Ekibi Ödevi</TEXT>
-     </RSMPE_TITT>
-    </TIT>
    </CUA>
    <TPOOL>
     <item>
      <ID>I</ID>
      <KEY>001</KEY>
-     <ENTRY>SAT Giriniz</ENTRY>
-     <LENGTH>21</LENGTH>
+     <ENTRY>Başlık Seçimi</ENTRY>
+     <LENGTH>15</LENGTH>
     </item>
     <item>
      <ID>I</ID>
      <KEY>002</KEY>
-     <ENTRY>SAS Giriniz</ENTRY>
-     <LENGTH>21</LENGTH>
+     <ENTRY>Kalem Seçimi</ENTRY>
+     <LENGTH>17</LENGTH>
     </item>
     <item>
      <ID>I</ID>
      <KEY>003</KEY>
-     <ENTRY>&amp;uname</ENTRY>
-     <LENGTH>16</LENGTH>
+     <ENTRY>Kırılım Seçimi</ENTRY>
+     <LENGTH>24</LENGTH>
     </item>
     <item>
      <ID>R</ID>
-     <ENTRY>Rapor Ödevi</ENTRY>
-     <LENGTH>11</LENGTH>
+     <ENTRY>Müşteri Siparişi Kırılım Raporu</ENTRY>
+     <LENGTH>31</LENGTH>
     </item>
     <item>
      <ID>S</ID>
-     <KEY>R_RAD1</KEY>
-     <ENTRY>SAT-SAS</ENTRY>
-     <LENGTH>15</LENGTH>
+     <KEY>C_BOX1</KEY>
+     <ENTRY>Sipariş Türü</ENTRY>
+     <LENGTH>20</LENGTH>
     </item>
     <item>
      <ID>S</ID>
-     <KEY>R_RAD2</KEY>
-     <ENTRY>SAS-SAT</ENTRY>
-     <LENGTH>15</LENGTH>
+     <KEY>C_BOX2</KEY>
+     <ENTRY>Malzeme No</ENTRY>
+     <LENGTH>18</LENGTH>
     </item>
     <item>
      <ID>S</ID>
-     <KEY>S_BANFN</KEY>
-     <ENTRY>SAT</ENTRY>
-     <LENGTH>11</LENGTH>
+     <KEY>C_BOX3</KEY>
+     <ENTRY>Sipariş Veren</ENTRY>
+     <LENGTH>21</LENGTH>
     </item>
     <item>
      <ID>S</ID>
-     <KEY>S_BNFPO</KEY>
-     <ENTRY>SAT Kalem</ENTRY>
+     <KEY>C_BOX4</KEY>
+     <ENTRY>Mal Grubu</ENTRY>
      <LENGTH>17</LENGTH>
     </item>
     <item>
      <ID>S</ID>
-     <KEY>S_EBELN</KEY>
-     <ENTRY>SAS</ENTRY>
-     <LENGTH>11</LENGTH>
+     <KEY>C_BOX5</KEY>
+     <ENTRY>Parti</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>S_AUART</KEY>
+     <ENTRY>Satış belgesi türü</ENTRY>
+     <LENGTH>26</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>S_AUDAT</KEY>
+     <ENTRY>Belge tarihi</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>S_CHARG</KEY>
+     <ENTRY>Parti</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>S_KUNNR</KEY>
+     <ENTRY>Sipariş Veren</ENTRY>
+     <LENGTH>21</LENGTH>
     </item>
     <item>
      <ID>S</ID>
      <KEY>S_MATKL</KEY>
-     <ENTRY>Mal Gurubu</ENTRY>
+     <ENTRY>Mal Grubu</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>S_MATNR</KEY>
+     <ENTRY>Malzeme</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>S_PSTYV</KEY>
+     <ENTRY>Kalem Tipi</ENTRY>
      <LENGTH>18</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>S_VBELN</KEY>
+     <ENTRY>Sipariş No</ENTRY>
+     <LENGTH>18</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>S_WERKS</KEY>
+     <ENTRY>Üretim Yeri</ENTRY>
+     <LENGTH>19</LENGTH>
     </item>
    </TPOOL>
   </asx:values>

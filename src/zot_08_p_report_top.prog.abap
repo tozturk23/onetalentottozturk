@@ -32,8 +32,15 @@ DATA: go_custom TYPE REF TO cl_gui_custom_container,
       gt_fcat   TYPE lvc_t_fcat,
       gs_fcat   TYPE lvc_s_fcat,
       gs_layout TYPE lvc_s_layo,
-      gv_title  TYPE char50.
+      gv_title  TYPE char50,
+      go_splitter TYPE REF TO cl_gui_splitter_container,
+      go_sub1     TYPE REF TO cl_gui_container,
+      go_sub2     TYPE REF TO cl_gui_container,
+      go_document TYPE REF TO cl_dd_document.
 
+CLASS: cl_event_receiver DEFINITION DEFERRED.
+
+DATA: go_event_receiver TYPE REF TO cl_event_receiver.
 
 FIELD-SYMBOLS: <gfs_eban> TYPE zot_08_s_eban,
                <gfs_ekpo> TYPE zot_08_s_ekpo.
